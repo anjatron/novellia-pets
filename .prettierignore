@@ -1,0 +1,9 @@
+# Generated files
+app/generated/
+node_modules/
+.next/
+prisma/migrations/
+prisma/*.db
+public/
+docker/
+app/components/ui/**
