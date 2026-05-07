@@ -5,12 +5,12 @@ export const VaccineRecordSchema = z.object({
 	recordType: z.literal(RecordType.VACCINE),
 	vaccineName: z.string().min(1, "Vaccine name is required"),
 	dateAdministered: z.string("Date administered is required"),
-	nextDueDate: z.string().optional(),
+	nextDueDate: z.string("Next due date is required"),
 });
 
 export const VaccineRecordServerSchema = VaccineRecordSchema.extend({
 	dateAdministered: z.coerce.date({ message: "Date administered is required" }),
-	nextDueDate: z.coerce.date().optional(), // server requires date!!
+	nextDueDate: z.coerce.date("Next due date is required"), // server requires date!!
 });
 
 export const AllergyRecordSchema = z.object({

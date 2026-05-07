@@ -65,9 +65,13 @@ export default function AllergyForm({
 						type="text"
 						placeholder="Enter allergy name"
 						defaultValue={defaultValues?.allergyName}
+						aria-required="true"
+						aria-describedby={
+							fieldErrors?.allergyName ? "alergyName-error" : "allergyName"
+						}
 					/>
 					{fieldErrors?.allergyName && (
-						<p className="mt-1 text-sm text-destructive">
+						<p className="mt-1 text-sm text-destructive" role="alert">
 							{fieldErrors.allergyName[0]}
 						</p>
 					)}
@@ -78,7 +82,9 @@ export default function AllergyForm({
 						className="block text-sm font-medium text-gray-700"
 					>
 						Severity
-						<span className="text-destructive">*</span>
+						<span className="text-destructive" aria-hidden="true">
+							*
+						</span>
 					</label>
 					<Select
 						value={severity}
@@ -87,7 +93,12 @@ export default function AllergyForm({
 						<SelectTrigger className="w-full">
 							<SelectValue placeholder="Select severity" />
 						</SelectTrigger>
-						<SelectContent>
+						<SelectContent
+							aria-describedby={
+								fieldErrors?.severity ? "severity-error" : "severity"
+							}
+							aria-required="true"
+						>
 							{Object.values(Severity).map((s) => (
 								<SelectItem key={s} value={s}>
 									{s.charAt(0) + s.slice(1).toLowerCase()}
@@ -96,7 +107,7 @@ export default function AllergyForm({
 						</SelectContent>
 					</Select>
 					{fieldErrors?.severity && (
-						<p className="mt-1 text-sm text-destructive">
+						<p className="mt-1 text-sm text-destructive" role="alert">
 							{fieldErrors.severity[0]}
 						</p>
 					)}
@@ -107,7 +118,9 @@ export default function AllergyForm({
 						className="block text-sm font-medium text-gray-700"
 					>
 						Reactions
-						<span className="text-destructive">*</span>
+						<span className="text-destructive" aria-hidden="true">
+							*
+						</span>
 					</label>
 					<Input
 						id="reactions"
@@ -115,17 +128,23 @@ export default function AllergyForm({
 						type="text"
 						placeholder="Describe reactions"
 						defaultValue={defaultValues?.reactions}
+						aria-required="true"
+						aria-describedby={
+							fieldErrors?.reactions ? "reactions-error" : "reactions"
+						}
 					/>
 					{fieldErrors?.reactions && (
-						<p className="mt-1 text-sm text-destructive">
+						<p className="mt-1 text-sm text-destructive" role="alert">
 							{fieldErrors.reactions[0]}
 						</p>
 					)}
 				</div>
 			</div>
-			{error && <p className="mt-2 text-sm text-destructive">{error}</p>}
+			{error && !fieldErrors && (
+				<p className="mt-2 text-sm text-destructive">{error}</p>
+			)}
 			<div className="mt-4 flex justify-end">
-				<Button type="submit" disabled={submitting}>
+				<Button type="submit" disabled={submitting} aria-busy={submitting}>
 					{submitting ? "Saving..." : recordId ? "Save Changes" : "Add Allergy"}
 				</Button>
 			</div>

@@ -1,8 +1,10 @@
-"use client";
-
 import PetListTable from "@/components/pets/pet-list-table";
 
-// pet list
+export const metadata = {
+	title: "Pets | Novellia Pets",
+	description: "Manage your pets and their medical records.",
+};
+
 export default function PetsPage() {
 	return (
 		<main>

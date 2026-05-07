@@ -2,6 +2,7 @@
 import {
 	Dialog,
 	DialogContent,
+	DialogDescription,
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
@@ -15,6 +16,7 @@ interface TriggeredDialogProps {
 	children: (onClose: () => void) => ReactNode;
 	icon?: ReactNode;
 	disabled?: boolean;
+	description?: string;
 }
 
 export function TriggeredDialog({
@@ -22,6 +24,7 @@ export function TriggeredDialog({
 	children,
 	icon,
 	disabled,
+	description,
 }: TriggeredDialogProps) {
 	const [open, setOpen] = useState(false);
 
@@ -33,9 +36,14 @@ export function TriggeredDialog({
 					<span>{title}</span>
 				</Button>
 			</DialogTrigger>
-			<DialogContent>
+			<DialogContent aria-describedby={title}>
 				<DialogHeader>
 					<DialogTitle>{title}</DialogTitle>
+					{description ? (
+						<DialogDescription>{description}</DialogDescription>
+					) : (
+						<DialogDescription className="sr-only">{title}</DialogDescription>
+					)}
 				</DialogHeader>
 				{children(() => setOpen(false))}
 			</DialogContent>

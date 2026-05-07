@@ -49,7 +49,9 @@ export default function VaccineForm({
 						className="block text-sm font-medium text-gray-700"
 					>
 						Vaccine Name
-						<span className="text-destructive">*</span>
+						<span className="text-destructive" aria-hidden="true">
+							*
+						</span>
 					</label>
 					<Input
 						id="vaccineName"
@@ -57,9 +59,13 @@ export default function VaccineForm({
 						type="text"
 						placeholder="Enter vaccine name"
 						defaultValue={defaultValues?.vaccineName}
+						aria-required="true"
+						aria-describedby={
+							fieldErrors?.vaccineName ? "vaccineName-error" : "vaccineName"
+						}
 					/>
 					{fieldErrors?.vaccineName && (
-						<p className="mt-1 text-sm text-destructive">
+						<p className="mt-1 text-sm text-destructive" role="alert">
 							{fieldErrors.vaccineName[0]}
 						</p>
 					)}
@@ -70,16 +76,24 @@ export default function VaccineForm({
 						className="block text-sm font-medium text-gray-700"
 					>
 						Date Administered
-						<span className="text-destructive">*</span>
+						<span className="text-destructive" aria-hidden="true">
+							*
+						</span>
 					</label>
 					<Input
 						id="dateAdministered"
 						name="dateAdministered"
 						type="date"
 						defaultValue={defaultValues?.dateAdministered}
+						aria-required="true"
+						aria-describedby={
+							fieldErrors?.dateAdministered
+								? "dateAdministered-error"
+								: "dateAdministered"
+						}
 					/>
 					{fieldErrors?.dateAdministered && (
-						<p className="mt-1 text-sm text-destructive">
+						<p className="mt-1 text-sm text-destructive" role="alert">
 							{fieldErrors.dateAdministered[0]}
 						</p>
 					)}
@@ -90,23 +104,32 @@ export default function VaccineForm({
 						className="block text-sm font-medium text-gray-700"
 					>
 						Next Due Date
+						<span className="text-destructive" aria-hidden="true">
+							*
+						</span>
 					</label>
 					<Input
 						id="nextDueDate"
 						name="nextDueDate"
 						type="date"
 						defaultValue={defaultValues?.nextDueDate}
+						aria-required="true"
+						aria-describedby={
+							fieldErrors?.nextDueDate ? "nextDueDate-error" : "nextDueDate"
+						}
 					/>
 					{fieldErrors?.nextDueDate && (
-						<p className="mt-1 text-sm text-destructive">
+						<p className="mt-1 text-sm text-destructive" role="alert">
 							{fieldErrors.nextDueDate[0]}
 						</p>
 					)}
 				</div>
 			</div>
-			{error && <p className="mt-2 text-sm text-destructive">{error}</p>}
+			{error && !fieldErrors && (
+				<p className="mt-2 text-sm text-destructive">{error}</p>
+			)}
 			<div className="mt-4 flex justify-end">
-				<Button type="submit" disabled={submitting}>
+				<Button type="submit" disabled={submitting} aria-busy={submitting}>
 					{submitting ? "Saving..." : recordId ? "Save Changes" : "Add Vaccine"}
 				</Button>
 			</div>

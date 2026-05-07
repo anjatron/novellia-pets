@@ -50,16 +50,21 @@ export default function PetForm({
 		<div className="max-w-lg">
 			<Card>
 				<CardContent className="pt-6 pb-2 px-8 space-y-6">
+					{error && !fieldErrors && (
+						<p className="text-sm text-destructive mb-4">{error}</p>
+					)}
 					<form action={handleSubmit}>
 						<div className="rounded-md bg-gray-50 p-4 md:p-6">
 							{/* Pet name */}
 							<div className="mb-4">
 								<label
-									htmlFor="name"
+									htmlFor="petName"
 									className="block text-sm font-medium text-gray-700"
 								>
 									Pet Name
-									<span className="text-destructive">*</span>
+									<span className="text-destructive" aria-hidden="true">
+										*
+									</span>
 								</label>
 								<Input
 									id="name"
@@ -67,10 +72,13 @@ export default function PetForm({
 									type="text"
 									placeholder="Enter pet name"
 									defaultValue={defaultValues?.name}
-									aria-describedby="pet-name"
+									aria-describedby={
+										fieldErrors?.name ? "petName-error" : "petName"
+									}
+									aria-required="true"
 								/>
 								{fieldErrors?.name && (
-									<p className="mt-1 text-sm text-destructive">
+									<p className="mt-1 text-sm text-destructive" role="alert">
 										{fieldErrors.name[0]}
 									</p>
 								)}
@@ -78,11 +86,13 @@ export default function PetForm({
 							{/* Pet type select */}
 							<div className="mb-4">
 								<label
-									htmlFor="type"
+									htmlFor="animalType"
 									className="block text-sm font-medium text-gray-700"
 								>
 									Pet Type
-									<span className="text-destructive">*</span>
+									<span className="text-destructive" aria-hidden="true">
+										*
+									</span>
 								</label>
 								<Select
 									value={animalType}
@@ -91,7 +101,14 @@ export default function PetForm({
 									<SelectTrigger className="w-full">
 										<SelectValue placeholder="Select pet type" />
 									</SelectTrigger>
-									<SelectContent>
+									<SelectContent
+										aria-describedby={
+											fieldErrors?.animalType
+												? "animalType-error"
+												: "animalType"
+										}
+										aria-required="true"
+									>
 										<SelectItem value="ALL">All</SelectItem>
 										{Object.values(AnimalType).map((type) => (
 											<SelectItem key={type} value={type}>
@@ -101,7 +118,7 @@ export default function PetForm({
 									</SelectContent>
 								</Select>
 								{fieldErrors?.animalType && (
-									<p className="mt-1 text-sm text-destructive">
+									<p className="mt-1 text-sm text-destructive" role="alert">
 										{fieldErrors.animalType[0]}
 									</p>
 								)}
@@ -113,33 +130,44 @@ export default function PetForm({
 									className="block text-sm font-medium text-gray-700"
 								>
 									Pet Date of Birth
-									<span className="text-destructive">*</span>
+									<span className="text-destructive" aria-hidden="true">
+										*
+									</span>
 								</label>
 								<Input
 									id="dateOfBirth"
 									name="dateOfBirth"
 									type="date"
 									defaultValue={defaultValues?.dateOfBirth}
-									aria-describedby="pet-date-of-birth"
+									aria-describedby={
+										fieldErrors?.dateOfBirth
+											? "dateOfBirth-error"
+											: "dateOfBirth"
+									}
+									aria-required="true"
 								/>
 								{fieldErrors?.dateOfBirth && (
-									<p className="mt-1 text-sm text-destructive">
+									<p className="mt-1 text-sm text-destructive" role="alert">
 										{fieldErrors.dateOfBirth[0]}
 									</p>
 								)}
 							</div>
 						</div>
-						{error && <p className="text-sm text-destructive">{error}</p>}
 						<div className="mt-6 flex justify-end gap-4">
 							<Button
 								type="button"
 								variant="destructive"
 								disabled={submitting}
 								onClick={() => router.push("/pets")}
+								aria-busy={submitting}
 							>
 								<span className="hidden md:block">Cancel</span>
 							</Button>
-							<Button type="submit" disabled={submitting}>
+							<Button
+								type="submit"
+								disabled={submitting}
+								aria-busy={submitting}
+							>
 								{submitting ? "Saving..." : submitLabel}
 							</Button>
 						</div>
