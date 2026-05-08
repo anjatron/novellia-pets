@@ -47,6 +47,7 @@ Open app -> [http://localhost:3000](http://localhost:3000)
 ```
 cp .env.example .env
 npm install
+npm run db:generate
 npm run db:migrate
 npm run db:seed
 npm run dev
