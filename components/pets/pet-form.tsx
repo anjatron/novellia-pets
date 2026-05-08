@@ -13,6 +13,7 @@ import { useState } from "react";
 import { CreatePetRequest } from "@/types/pet";
 import { Card, CardContent } from "@/components/ui/card";
 import { useRouter } from "next/navigation";
+import { toTitleCase } from "@/lib/utils";
 
 interface PetFormProps {
 	defaultValues?: Partial<CreatePetRequest>;
@@ -112,7 +113,7 @@ export default function PetForm({
 										<SelectItem value="ALL">All</SelectItem>
 										{Object.values(AnimalType).map((type) => (
 											<SelectItem key={type} value={type}>
-												{type}
+											{toTitleCase(type)}
 											</SelectItem>
 										))}
 									</SelectContent>
