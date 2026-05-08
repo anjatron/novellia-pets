@@ -23,12 +23,5 @@ export interface Pet {
 	}[];
 }
 
-// export interface CreatePetRequest {
-// 	name: string;
-// 	animalType: AnimalType;
-// 	dateOfBirth: string;
-// }
-
-// export interface UpdatePetRequest extends Partial<CreatePetRequest> {}
 export type CreatePetRequest = z.infer<typeof PetCreateSchema>;
 export type UpdatePetRequest = z.infer<typeof PetUpdateSchema>;

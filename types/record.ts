@@ -26,34 +26,6 @@ export interface MedicalRecord {
 	};
 }
 
-// export type CreateMedicalRecordRequest =
-// 	| {
-// 			recordType: RecordType.VACCINE;
-// 			vaccineName: string;
-// 			dateAdministered: string;
-// 			nextDueDate: string;
-// 	  }
-// 	| {
-// 			recordType: RecordType.ALLERGY;
-// 			allergyName: string;
-// 			reactions: string;
-// 			severity: string;
-// 	  };
-
-// export type UpdateMedicalRecordRequest =
-// 	| {
-// 			recordType: RecordType.VACCINE;
-// 			vaccineName?: string;
-// 			dateAdministered?: string;
-// 			nextDueDate?: string;
-// 	  }
-// 	| {
-// 			recordType: RecordType.ALLERGY;
-// 			allergyName?: string;
-// 			reactions?: string;
-// 			severity?: string;
-// 	  };
-
 export type CreateVaccineRequest = z.infer<typeof VaccineRecordSchema>;
 export type CreateAllergyRequest = z.infer<typeof AllergyRecordSchema>;
 export type CreateMedicalRecordRequest =
