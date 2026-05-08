@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { ConfirmDialog } from "@/components/common/dialog/confirm-dialog";
 import { useMemo, useState } from "react";
 import { ActionButtonGroup } from "@/components/common/action-button-group";
-import { formatUTCDate } from "@/lib/utils";
+import { formatUTCDate, isBirthdayUpcoming } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 // custom skeleton for pet details
@@ -62,21 +62,9 @@ export function PetDetail({ petId }: { petId: string }) {
 		if (!pet) {
 			return { isUpcoming: false };
 		}
-		const now = new Date();
-		const thirtyDaysFromNow = new Date(
-			now.getTime() + 30 * 24 * 60 * 60 * 1000,
-		);
 
-		const date = new Date(pet.dateOfBirth);
-		const birthday = new Date(date);
-		birthday.setFullYear(now.getFullYear());
-
-		if (birthday < now) {
-			birthday.setFullYear(now.getFullYear() + 1);
-		}
-
-		return { isUpcoming: birthday <= thirtyDaysFromNow };
-	}, [pet, pet?.dateOfBirth]);
+		return { isUpcoming: isBirthdayUpcoming(pet.dateOfBirth) };
+	}, [pet]);
 
 	if (loading) return <PetDetailSkeleton />;
 	// the client side api will throw an error if pet is not found

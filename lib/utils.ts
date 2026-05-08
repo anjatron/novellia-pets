@@ -17,3 +17,23 @@ export function formatUTCDate(dateString: string) {
 		"MM/dd/yyyy",
 	);
 }
+
+export function isBirthdayUpcoming(dateString: string) {
+	const date = new Date(dateString);
+
+	const now = new Date();
+	const todayUTC = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+	const thirtyDaysFromNow = new Date(todayUTC.getTime() + 30 * 24 * 60 * 60 * 1000);
+
+	const birthday = new Date(Date.UTC(
+		todayUTC.getUTCFullYear(),
+		date.getUTCMonth(),
+		date.getUTCDate()
+	))
+
+	if (birthday < todayUTC) {
+		birthday.setUTCFullYear(todayUTC.getUTCFullYear() + 1);
+	}
+
+	return birthday <= thirtyDaysFromNow;
+}

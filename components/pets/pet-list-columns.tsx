@@ -5,7 +5,7 @@ import { Pet } from "@/types/pet";
 import { Cake, Pencil, Trash2 } from "lucide-react";
 import { ActionButtonGroup } from "@/components/common/action-button-group";
 import { Badge } from "@/components/ui/badge";
-import { formatUTCDate, toTitleCase } from "@/lib/utils";
+import { formatUTCDate, isBirthdayUpcoming, toTitleCase } from "@/lib/utils";
 
 interface PetListProps {
 	onDelete: (petId: string) => void;
@@ -35,21 +35,10 @@ export function getPetListColumns({
 			accessorKey: "dateOfBirth",
 			header: "Date of Birth",
 			cell: ({ getValue }) => {
-				const dateString = getValue() as string;
-				const date = new Date(dateString);
-				const now = new Date();
-				const thirtyDaysFromNow = new Date(
-					Date.now() + 30 * 24 * 60 * 60 * 1000,
-				);
+				const dateString = getValue() as string
+				const isUpcoming = isBirthdayUpcoming(dateString);
 
-				const birthday = new Date(date);
-				birthday.setFullYear(now.getFullYear());
-
-				if (birthday < now) {
-					birthday.setFullYear(now.getFullYear() + 1);
-				}
-
-				if (birthday <= thirtyDaysFromNow) {
+				if (isUpcoming) {
 					return (
 						<div className="flex items-center gap-1">
 							{formatUTCDate(dateString)}
