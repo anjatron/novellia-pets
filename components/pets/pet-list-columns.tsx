@@ -84,14 +84,15 @@ export function getPetListColumns({
 					(record) =>
 						record.vaccine && new Date(record.vaccine.nextDueDate) >= now,
 				);
-
+				console.log("hasOverdue", hasOverdue, "hasUpcoming", hasUpcoming);
+				console.log("nextDueDate", records[0]?.vaccine?.nextDueDate);
 				return (
 					<div className="flex gap-1 flex-wrap">
 						{hasOverdue && <Badge variant="destructive">Overdue</Badge>}
 						{hasUpcoming && (
 							<Badge
 								variant="outline"
-								className="boarder-amber-500 text-amber-600 bg-amber-50"
+								className="border-amber-500 text-amber-600 bg-amber-50"
 							>
 								Due Soon
 							</Badge>
