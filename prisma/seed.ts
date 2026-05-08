@@ -39,8 +39,8 @@ const userData: Prisma.UserCreateInput[] = [
 								vaccine: {
 									create: {
 										vaccineName: "Rabies",
-										dateAdministered: new Date("2025-05-06"),
-										nextDueDate: new Date("2026-05-06"), // next up
+										dateAdministered: new Date("2025-05-20"),
+										nextDueDate: new Date("2026-05-20"), // next up
 									},
 								},
 							},

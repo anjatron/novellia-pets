@@ -5,6 +5,7 @@ import { SkeletonCard } from "@/components/common/cards/skeleton-card";
 import { StatCardError } from "@/components/common/cards/stat-card-error";
 import { format } from "date-fns";
 import { useOverdueVaccines } from "@/lib/hooks/dashboard/use-overdue-vaccines";
+import { formatUTCDate } from "@/lib/utils";
 
 export function OverdueVaccinesCard() {
 	const { data, loading, error, retry } = useOverdueVaccines();
@@ -36,7 +37,7 @@ export function OverdueVaccinesCard() {
 									<p className="text-muted-foreground">{vaccine.vaccineName}</p>
 								</div>
 								<span className="text-muted-foreground shrink-0">
-									{format(new Date(vaccine.nextDueDate), "MMM d")}
+									{format(formatUTCDate(vaccine.nextDueDate), "MMM d")}
 								</span>
 							</div>
 						))}

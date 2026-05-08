@@ -5,6 +5,7 @@ import { useUpcomingVaccines } from "@/lib/hooks/dashboard/use-upcoming-vaccines
 import { SkeletonCard } from "@/components/common/cards/skeleton-card";
 import { StatCardError } from "@/components/common/cards/stat-card-error";
 import { format } from "date-fns";
+import { formatUTCDate } from "@/lib/utils";
 
 export function UpcomingVaccinesCard() {
 	const { data, loading, error, retry } = useUpcomingVaccines();
@@ -34,7 +35,7 @@ export function UpcomingVaccinesCard() {
 									<p className="text-muted-foreground">{vaccine.vaccineName}</p>
 								</div>
 								<span className="text-muted-foreground shrink-0">
-									{format(new Date(vaccine.nextDueDate), "MMM d")}
+									{format(formatUTCDate(vaccine.nextDueDate), "MMM d")}
 								</span>
 							</div>
 						))}
