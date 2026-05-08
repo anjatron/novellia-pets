@@ -6,8 +6,10 @@ import { SkeletonCard } from "@/components/common/cards/skeleton-card";
 import { StatCardError } from "@/components/common/cards/stat-card-error";
 import { format } from "date-fns";
 import { formatUTCDate } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export function UpcomingVaccinesCard() {
+	const router = useRouter();
 	const { data, loading, error, retry } = useUpcomingVaccines();
 
 	if (loading) return <SkeletonCard />;
@@ -28,7 +30,8 @@ export function UpcomingVaccinesCard() {
 						{data.map((vaccine) => (
 							<div
 								key={vaccine.id}
-								className="flex items-center justify-between text-xs border rounded-md px-2 py-1.5"
+								onClick={() => router.push(`/pets/${vaccine.record.pet.id}`)}
+								className="flex items-center justify-between text-xs border rounded-md px-2 py-1.5 cursor-pointer hover:bg-muted transition-colors"
 							>
 								<div>
 									<p className="font-medium">{vaccine.record.pet.name}</p>

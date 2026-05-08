@@ -6,8 +6,10 @@ import { StatCardError } from "@/components/common/cards/stat-card-error";
 import { format } from "date-fns";
 import { useOverdueVaccines } from "@/lib/hooks/dashboard/use-overdue-vaccines";
 import { formatUTCDate } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 export function OverdueVaccinesCard() {
+	const router = useRouter();
 	const { data, loading, error, retry } = useOverdueVaccines();
 
 	if (loading) return <SkeletonCard />;
@@ -30,7 +32,8 @@ export function OverdueVaccinesCard() {
 						{data.map((vaccine) => (
 							<div
 								key={vaccine.id}
-								className="flex items-center justify-between text-xs border border-destructive/20 bg-destructive/5 rounded-md px-2 py-1.5"
+								onClick={() => router.push(`/pets/${vaccine.record.pet.id}`)}
+								className="flex items-center justify-between text-xs border border-destructive/20 bg-destructive/5 rounded-md px-2 py-1.5 cursor-pointer hover:bg-muted transition-colors"
 							>
 								<div>
 									<p className="font-medium">{vaccine.record.pet.name}</p>
