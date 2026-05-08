@@ -14,13 +14,11 @@ export function proxy(request: NextRequest) {
 
 	// Don't block login routes
 	if (isLoginPage || isLoginApi || isUsersApi) {
-		console.log("Login shenanigans");
 		return NextResponse.next();
 	}
 
 	// Redirect to login if no mock user was selected
 	if (!userId) {
-		console.log("Whoops, need login");
 		return NextResponse.redirect(new URL("/login", request.url));
 	}
 
