@@ -3,6 +3,6 @@ setup:
 
 run:
 	docker run -p 3000:3000 \
-		-e DATABASE_URL="file:./dev.db" \
+		-e DATABASE_URL="file:./prisma/dev.db" \
 		-v novellia-pets-db:/app/prisma \
 		novellia-pets

@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"db:clean": "rm -rf prisma/migrations prisma/dev.db app/generated/prisma",
+		"db:clean": "rm -rf prisma/dev.db app/generated/prisma",
 		"db:generate": "npx prisma generate",
 		"db:seed": "npx prisma db seed",
 		"db:launch": "npx prisma studio",

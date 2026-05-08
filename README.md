@@ -53,7 +53,9 @@ npm run db:seed
 npm run dev
 ```
 
-Note: Requires Node v22
+Note: `prisma/seed.ts` requires that the db commands are run first which create the generated files that the seed uses to function.
+
+Requires Node v22
 
 Open app -> [http://localhost:3000](http://localhost:3000)
 

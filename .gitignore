@@ -9,7 +9,6 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-package-lock.json
 
 # testing
 /coverage
@@ -43,5 +42,4 @@ yarn-error.log*
 next-env.d.ts
 
 /app/generated/prisma
-/prisma/migrations/*
 /prisma/*.db
