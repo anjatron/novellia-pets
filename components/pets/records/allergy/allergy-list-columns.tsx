@@ -3,7 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Pencil, Trash2 } from "lucide-react";
 import { MedicalRecord } from "@/types/record";
-import { ActionButtonGroup } from "@/components/action-button-group";
+import { ActionButtonGroup } from "@/components/common/action-button-group";
 import { toTitleCase } from "@/lib/utils";
 
 interface AllergyListColumnProps {

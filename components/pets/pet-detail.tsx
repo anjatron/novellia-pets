@@ -5,9 +5,9 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Cake, Pencil, Trash2 } from "lucide-react";
 import { useDeletePet } from "@/lib/hooks/pets/use-delete-pet";
 import { useRouter } from "next/navigation";
-import { ConfirmDialog } from "@/components/confirm-dialog";
+import { ConfirmDialog } from "@/components/common/dialog/confirm-dialog";
 import { useMemo, useState } from "react";
-import { ActionButtonGroup } from "@/components/action-button-group";
+import { ActionButtonGroup } from "@/components/common/action-button-group";
 import { formatUTCDate } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 

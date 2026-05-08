@@ -1,8 +1,8 @@
 "use client";
 import { RecordType } from "@/types/enums";
 import { FunctionComponent, useState } from "react";
-import AllergyRecordsTable from "./allergy/allergy-list-table";
-import VaccineRecordsTable from "./vaccine/vaccine-list-table";
+import AllergyRecordsTable from "@/components/pets/records/allergy/allergy-list-table";
+import VaccineRecordsTable from "@/components/pets/records/vaccine/vaccine-list-table";
 import {
 	Select,
 	SelectContent,

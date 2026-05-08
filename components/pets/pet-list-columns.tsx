@@ -3,8 +3,8 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Pet } from "@/types/pet";
 import { Cake, Pencil, Trash2 } from "lucide-react";
-import { ActionButtonGroup } from "@/components/action-button-group";
-import { Badge } from "../ui/badge";
+import { ActionButtonGroup } from "@/components/common/action-button-group";
+import { Badge } from "@/components/ui/badge";
 import { formatUTCDate, toTitleCase } from "@/lib/utils";
 
 interface PetListProps {
@@ -35,7 +35,8 @@ export function getPetListColumns({
 			accessorKey: "dateOfBirth",
 			header: "Date of Birth",
 			cell: ({ getValue }) => {
-				const date = new Date(getValue() as string);
+				const dateString = getValue() as string;
+				const date = new Date(dateString);
 				const now = new Date();
 				const thirtyDaysFromNow = new Date(
 					Date.now() + 30 * 24 * 60 * 60 * 1000,
@@ -51,12 +52,12 @@ export function getPetListColumns({
 				if (birthday <= thirtyDaysFromNow) {
 					return (
 						<div className="flex items-center gap-1">
-							{formatUTCDate(date.toLocaleDateString())}
+							{formatUTCDate(dateString)}
 							<Cake className="w-4 h-4 text-pink-400" />
 						</div>
 					);
 				}
-				return formatUTCDate(date.toLocaleDateString());
+				return formatUTCDate(dateString);
 			},
 		},
 		{

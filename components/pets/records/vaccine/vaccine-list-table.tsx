@@ -1,6 +1,6 @@
 'use client";';
-import { DataTable } from "@/components/data-table";
-import { SkeletonTable } from "@/components/skeleton-table";
+import { DataTable } from "@/components/common/table/data-table";
+import { SkeletonTable } from "@/components/common/table/skeleton-table";
 import { useMedicalRecords } from "@/lib/hooks/records/use-medical-records";
 import { RecordType } from "@/types/enums";
 import { getVaccineListColumns } from "./vaccine-list-columns";
@@ -8,10 +8,10 @@ import { useDeleteRecord } from "@/lib/hooks/records/use-delete-record";
 import { useState } from "react";
 import { MedicalRecord } from "@/types/record";
 import VaccineForm from "./vaccine-form";
-import { TriggeredDialog } from "@/components/triggered-dialog";
-import { ControlledDialog } from "@/components/controlled-dialog";
-import { ConfirmDialog } from "@/components/confirm-dialog";
-import { TableError } from "@/components/table-error";
+import { TriggeredDialog } from "@/components/common/dialog/triggered-dialog";
+import { ControlledDialog } from "@/components/common/dialog/controlled-dialog";
+import { ConfirmDialog } from "@/components/common/dialog/confirm-dialog";
+import { TableError } from "@/components/common/table/table-error";
 
 export default function VaccineRecordsTable({
 	petId,

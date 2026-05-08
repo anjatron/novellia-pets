@@ -1,5 +1,5 @@
 "use client";
-import Breadcrumbs from "@/components/bread-crumbs";
+import Breadcrumbs from "@/components/common/bread-crumbs";
 import PetForm from "@/components/pets/pet-form";
 import { useCreatePet } from "@/lib/hooks/pets/use-create-pet";
 

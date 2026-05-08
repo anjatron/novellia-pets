@@ -1,7 +1,7 @@
 "use client";
-import { DataTable } from "@/components/data-table";
+import { DataTable } from "@/components/common/table/data-table";
 import { getAllergyListColumns } from "./allergy-list-columns";
-import { SkeletonTable } from "@/components/skeleton-table";
+import { SkeletonTable } from "@/components/common/table/skeleton-table";
 import { useMedicalRecords } from "@/lib/hooks/records/use-medical-records";
 import { RecordType } from "@/types/enums";
 import { MedicalRecord } from "@/types/record";
@@ -9,10 +9,10 @@ import { useState } from "react";
 
 import AllergyForm from "./allergy-form";
 import { useDeleteRecord } from "@/lib/hooks/records/use-delete-record";
-import { TriggeredDialog } from "@/components/triggered-dialog";
-import { ControlledDialog } from "@/components/controlled-dialog";
-import { ConfirmDialog } from "@/components/confirm-dialog";
-import { TableError } from "@/components/table-error";
+import { TriggeredDialog } from "@/components/common/dialog/triggered-dialog";
+import { ControlledDialog } from "@/components/common/dialog/controlled-dialog";
+import { ConfirmDialog } from "@/components/common/dialog/confirm-dialog";
+import { TableError } from "@/components/common/table/table-error";
 
 export default function AllergyRecordsTable({
 	petId,

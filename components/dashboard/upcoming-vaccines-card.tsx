@@ -2,8 +2,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Syringe } from "lucide-react";
 import { useUpcomingVaccines } from "@/lib/hooks/dashboard/use-upcoming-vaccines";
-import { SkeletonCard } from "../skeleton-card";
-import { StatCardError } from "../stat-card-error";
+import { SkeletonCard } from "@/components/common/cards/skeleton-card";
+import { StatCardError } from "@/components/common/cards/stat-card-error";
 import { format } from "date-fns";
 
 export function UpcomingVaccinesCard() {

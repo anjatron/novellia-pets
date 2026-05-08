@@ -1,9 +1,9 @@
 "use client";
 import { usePetsByType } from "@/lib/hooks/dashboard/use-pets-by-type";
-import { SkeletonCard } from "../skeleton-card";
-import { StatCardError } from "../stat-card-error";
-import { PieChartCard } from "../pie-chart-card";
-import { ChartConfig } from "../ui/chart";
+import { SkeletonCard } from "@/components/common/cards/skeleton-card";
+import { StatCardError } from "@/components/common/cards/stat-card-error";
+import { PieChartCard } from "@/components/common/cards/pie-chart-card";
+import { ChartConfig } from "@/components/ui/chart";
 
 const config: ChartConfig = {
 	DOG: { label: "Dog", color: "#8B5CF6" },

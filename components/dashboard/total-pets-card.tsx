@@ -1,8 +1,8 @@
 "use client";
 import { useTotalPets } from "@/lib/hooks/dashboard/use-total-pets";
-import { SkeletonCard } from "../skeleton-card";
-import { StatCardError } from "../stat-card-error";
-import { StatCard } from "../stat-card";
+import { SkeletonCard } from "@/components/common/cards/skeleton-card";
+import { StatCardError } from "@/components/common/cards/stat-card-error";
+import { StatCard } from "@/components/common/cards/stat-card";
 import { PawPrint } from "lucide-react";
 
 export function TotalPetsCard() {

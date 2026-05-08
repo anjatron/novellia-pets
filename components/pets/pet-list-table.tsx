@@ -1,8 +1,8 @@
 "use client";
-import { DataTable } from "@/components/data-table";
+import { DataTable } from "@/components/common/table/data-table";
 import { getPetListColumns } from "@/components/pets/pet-list-columns";
 import { useDeletePet } from "@/lib/hooks/pets/use-delete-pet";
-import { SkeletonTable } from "@/components/skeleton-table";
+import { SkeletonTable } from "@/components/common/table/skeleton-table";
 import { usePets } from "@/lib/hooks/pets/use-pets";
 import { useDebounce } from "@/lib/hooks/use-debounce";
 import { Input } from "@/components/ui/input";
@@ -18,9 +18,9 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { AnimalType } from "@/types/enums";
-import { ConfirmDialog } from "@/components/confirm-dialog";
+import { ConfirmDialog } from "@/components/common/dialog/confirm-dialog";
 import { toTitleCase } from "@/lib/utils";
-import { TableError } from "../table-error";
+import { TableError } from "@/components/common/table/table-error";
 
 export default function PetListTable() {
 	const [animalType, setAnimalType] = useState<AnimalType | undefined>(

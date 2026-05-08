@@ -1,7 +1,7 @@
 "use client";
-import Breadcrumbs from "@/components/bread-crumbs";
+import Breadcrumbs from "@/components/common/bread-crumbs";
 import PetForm from "@/components/pets/pet-form";
-import { SkeletonCard } from "@/components/skeleton-card";
+import { SkeletonCard } from "@/components/common/cards/skeleton-card";
 import { usePetDetails } from "@/lib/hooks/pets/use-pet-details";
 import { useUpdatePet } from "@/lib/hooks/pets/use-update-pet";
 import { useRouter } from "next/navigation";
